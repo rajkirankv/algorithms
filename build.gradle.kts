@@ -15,11 +15,21 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+
+    flatDir {
+        dirs("libs")
+    }
 }
 
 dependencies {
+
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api("org.apache.commons:commons-math3:3.6.1")
+
+    api("edu.princeton.cs.algs4:algs4:1.0")
+
+    // https://mvnrepository.com/artifact/com.googlecode.princeton-java-algorithms/algorithms
+    //api("com.googlecode.princeton-java-algorithms:algorithms:4.0.1")
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation("com.google.guava:guava:28.1-jre")
