@@ -76,10 +76,10 @@ public class WGraph {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		String fileLoc = args[0];
-		WGraph wg = new WGraph(fileLoc);
-		assert wg.V() == 8;
-		assert wg.E() == 16;
+		// String fileLoc = args[0];
+		// WGraph wg = new WGraph(fileLoc);
+		// assert wg.V() == 8;
+		// assert wg.E() == 16;
 	}
 }
 

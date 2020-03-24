@@ -22,13 +22,4 @@ abstract class MST {
 	public Double weight() {
 		return weight;
 	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		String fileLoc = args[0];
-		WGraph wg = new WGraph(fileLoc);
-		MST mst = new PrimLazy(wg);
-		for(Edge e : mst.edges())
-			System.out.println(e);
-		System.out.println(mst.weight());
-	}
 }
