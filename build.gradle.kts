@@ -9,6 +9,8 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     `java-library`
+    `application`
+
 }
 
 repositories {
@@ -25,6 +27,9 @@ dependencies {
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api("org.apache.commons:commons-math3:3.6.1")
+
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    api("com.google.guava:guava:28.2-jre");
 
     api("edu.princeton.cs.algs4:algs4:1.0")
 
@@ -48,13 +53,9 @@ val test by tasks.getting(Test::class) {
     // Use junit platform for unit tests
     useJUnitPlatform()
 
-// tasks.create<Copy>("copyTestJavaResources") {
-//     description = "Copy resources from src to build to make them available"
-
-//     from("${projectDir}/src/test/java/resources/algs4-data")
-//     into("${buildDir}/")
-// }
-
+application {
+    mainClassName = "graphs.undirected.weighted.PrimEager"
+}
 
 }
 
