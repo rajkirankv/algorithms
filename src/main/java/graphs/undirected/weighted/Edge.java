@@ -3,6 +3,8 @@ This class describes a weighted Edge
 */
 package graphs.undirected.weighted;
 
+import java.util.Objects;
+
 class Edge implements Comparable<Edge> {
 	
 	int v, w;
@@ -39,6 +41,11 @@ class Edge implements Comparable<Edge> {
 	@Override
 	public String toString() {
 		return String.format("%d %d %.4f", v, w, weight);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(v, w, weight);
 	}
 
 	public static void main(String[] args) {
