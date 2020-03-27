@@ -12,14 +12,14 @@ import java.util.Arrays;
 
 public class PrimLazy extends MST {
 
-	private Boolean[] marked;
+	private boolean[] marked;
 	private LinkedList<Edge> edges;
 	private PriorityQueue<Edge> bridges;
 
 
 	public PrimLazy(WGraph wg) {
 		this.wg = wg;
-		marked = new Boolean[wg.V()];
+		marked = new boolean[wg.V()];
 		edges = new LinkedList<Edge>();
 		bridges = new PriorityQueue<Edge>();
 		weight = 0.0;
@@ -30,8 +30,9 @@ public class PrimLazy extends MST {
 			v = buildMST();
 		}
 
-		assert Arrays.stream(marked).reduce(true, Boolean::logicalAnd) :
-				"All vertices must be included in the MST";
+		//TODO: Build a stream from a primitive boolean array
+		// assert Arrays.stream(marked).reduce(true, Boolean::logicalAnd) :
+		// 		"All vertices must be included in the MST";
 
 		// assert Arrays.asList(marked).stream().reduce(true, (a, b) -> a && b) :
 		// 		"All vertices must be included in the MST";
@@ -40,9 +41,14 @@ public class PrimLazy extends MST {
 
 	private void visit(int v) {
 		marked[v] = true;
-		for(Edge e : wg.adj(v))
+		// System.out.println("Array list for " + v + ": " + wg.adj(v));
+		for(Edge e : wg.adj(v)) {
+			// System.out.println("Now, edge: " + e);
+			// System.out.println("Now, other vertex: " + e.other(v));
+			// System.out.println("Now, other vertex: " + e.other(v) + " Marked status: " + marked[e.other(v)]);
 			if(!marked[e.other(v)])
 				bridges.add(e);
+		}
 	}
 
 	private int buildMST() {
@@ -67,3 +73,22 @@ public class PrimLazy extends MST {
 		return marked[v] ? w : v;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

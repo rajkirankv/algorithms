@@ -8,19 +8,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import graphs.undirected.weighted.WGraph;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 class PrimLazyTest {
 
+	private PrimLazy mst;
+	private WGraph wg;
+	private String fileLoc;
 
-	// MST mst;
+	@BeforeEach void init() throws FileNotFoundException {
+		String param = "algs4-data/tinyEWG.txt";
+		File file = new File(getClass().getClassLoader().getResource(param).getFile());
+		fileLoc = file.getAbsolutePath();
+		wg = new WGraph(fileLoc);
+		// System.out.println(wg);
+		mst = new PrimLazy(wg);
+	}
 
-	// @ParametrizedTest
-	// @ValueSource(strings = {"resource_loc"})
-	// @BeforeAll void setUp(String[] fileLocs) {
-	// 	wg = new WGraph(fileLocs[0]);
-	// 	mst = new PrimLazy(wg);
-	// }
-
-	// @Test void 
-
+	@Test void testWeight() {
+		assertEquals(mst.weight(), 1.81);
+	}
 }

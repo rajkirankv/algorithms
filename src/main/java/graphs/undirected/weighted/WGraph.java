@@ -19,16 +19,20 @@ public class WGraph {
 
 	public WGraph(int V) {
 		this.V = V;
-		adj = (ArrayList<Edge>[]) new ArrayList[V];
+		build(V);
 	}
 
 	public WGraph(FileInputStream in) {
 		Scanner sc = new Scanner(in);
 		this.V = sc.nextInt();
 		int E = sc.nextInt();
+		build(V);
+
 		while(sc.hasNextLine())
 			addEdge(new Edge(sc.nextInt(), sc.nextInt(), sc.nextDouble()));
+		
 		assert E == this.E : String.format("%d edges were promised but % edges were provided", E, this.E);
+		sc.close();
 	}
 
 	public WGraph(File f) throws FileNotFoundException {
@@ -37,6 +41,14 @@ public class WGraph {
 
 	public WGraph(String fLoc) throws FileNotFoundException {
 		this(new FileInputStream(fLoc));
+	}
+
+	// A separate private method is written to circumvent the restriction that constructors
+	// cannot use other constructors except as thier first statement.
+	private void build(int V) {
+		adj = (ArrayList<Edge>[]) new ArrayList[V];
+		for(int i = 0; i < V; i++)
+			adj[i] = new ArrayList<Edge>();
 	}
 
 	public int V() {
