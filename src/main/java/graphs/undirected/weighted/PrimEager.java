@@ -60,25 +60,4 @@ class PrimEager extends MST {
 			s += e.toString() + "\n";
 		return s.trim();
 	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		// File file = new File(getClass().getClassLoader().getResource(args[0]).getFile());
-		System.out.println("The file: " + args[0]);
-		// File file = new File(PrimLazy.class.getResource(args[0]).getFile());
-		File file = new File(args[0]);
-		String fileLoc = file.getAbsolutePath();
-		System.out.println(fileLoc);
-		WGraph wg = new WGraph(fileLoc);
-		int n = 10;
-		double[] times = new double[n];
-		long startTime, stopTime;
-		for(int i = 0; i < n; i++) {
-			startTime = System.nanoTime();
-			MST mst = new PrimLazy(wg);
-			stopTime = System.nanoTime();
-			times[i] = (double) (stopTime - startTime)/Math.pow(10.0, 6.0);
-		}
-		System.out.println("Average execution time: " + StatUtils.mean(times));
-		System.out.println("Standard deviation of execution time: " + Math.sqrt(StatUtils.variance(times)));
-	}
 }
