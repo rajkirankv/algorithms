@@ -13,9 +13,9 @@ import java.util.HashSet;
 
 public class WGraph {
 
-	private final int V;
-	private int E;
-	private ArrayList<Edge>[] adj;
+	protected final int V;
+	protected int E;
+	protected ArrayList<Edge>[] adj;
 
 	public WGraph(int V) {
 		this.V = V;
@@ -45,7 +45,7 @@ public class WGraph {
 
 	// A separate private method is written to circumvent the restriction that constructors
 	// cannot use other constructors except as thier first statement.
-	private void build(int V) {
+	protected void build(int V) {
 		adj = (ArrayList<Edge>[]) new ArrayList[V];
 		for(int i = 0; i < V; i++)
 			adj[i] = new ArrayList<Edge>();
@@ -88,10 +88,6 @@ public class WGraph {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		// String fileLoc = args[0];
-		// WGraph wg = new WGraph(fileLoc);
-		// assert wg.V() == 8;
-		// assert wg.E() == 16;
 	}
 }
 

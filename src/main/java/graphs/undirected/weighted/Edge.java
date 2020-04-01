@@ -5,12 +5,12 @@ package graphs.undirected.weighted;
 
 import java.util.Objects;
 
-class Edge implements Comparable<Edge> {
+public class Edge implements Comparable<Edge> {
 	
-	int v, w;
-	Double weight;
+	protected int v, w;
+	protected Double weight;
 
-	Edge(int v, int w, Double weight) {
+	protected Edge(int v, int w, Double weight) {
 		
 		if(v < 0  || w < 0)
 			throw new IllegalArgumentException("Vertices can't be negtive numbers");
@@ -29,7 +29,7 @@ class Edge implements Comparable<Edge> {
 		return u == v ? w : v;
 	}
 
-	Double weight() {
+	protected Double weight() {
 		return weight;
 	}
 
