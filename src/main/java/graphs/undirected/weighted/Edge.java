@@ -29,7 +29,7 @@ public class Edge implements Comparable<Edge> {
 		return u == v ? w : v;
 	}
 
-	protected Double weight() {
+	public Double weight() {
 		return weight;
 	}
 
